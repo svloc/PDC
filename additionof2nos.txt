@@ -1,0 +1,73 @@
+// comments :  
+1) Make a folder for RMI name it as Client Server Rmi
+2) inside the folder make 4 different files of the below code and save it as .java 
+3) open terminal
+   cd ClientServerRmi
+enter
+now type javac space *.java
+enter
+rmic space AdderRemote
+enter
+rmiregistry space 5000
+enter
+
+4) open new terminal
+   cd ClientServerRmi
+enter 
+java space MyServer
+enter
+
+5) open new terminal
+   cd ClientServerRmi
+enter 
+java space MyClient
+enter
+now you will get the output ie 38
+
+
+
+
+
+
+1] Adder.java
+
+import java.rmi.*;
+public interface Adder extends Remote{
+public int add(int x,int y)throws RemoteException;
+}
+
+2] AdderRemote.java
+import java.rmi.*;  
+import java.rmi.server.*;  
+public class AdderRemote extends UnicastRemoteObject implements Adder{  
+AdderRemote()throws RemoteException{  
+super();  
+}  
+public int add(int x,int y){return x+y;}  
+}  
+
+3] MyServer.java
+
+import java.rmi.*;  
+import java.rmi.registry.*;  
+public class MyServer{  
+public static void main(String args[]){  
+try{  
+Adder stub=new AdderRemote();  
+Naming.rebind("rmi://localhost:5000/sonoo",stub);  
+}catch(Exception e){System.out.println(e);}  
+}  
+}  
+
+
+4] MyClient.java
+
+import java.rmi.*;  
+public class MyClient{  
+public static void main(String args[]){  
+try{  
+Adder stub=(Adder)Naming.lookup("rmi://localhost:5000/sonoo");  
+System.out.println(stub.add(34,4));  
+}catch(Exception e){}  
+}  
+}

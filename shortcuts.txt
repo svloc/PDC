@@ -1,0 +1,35 @@
+save this file on desktop with the same name B capital |||||| Bully.java
+open terminal
+there are 2 commands 1)javac space Bully.java press enter
+java space Bully( let the class name be the file name)
+
+cd Desktop
+enter
+javac Bully .java
+enter
+java space Bully
+enter
+Then a menu driven program will appear
+then you will be asked to enter the menu
+
+Same goes with Ring R capital
+
+------------------------------------------------------------------------------
+Matrix multiplication using open MP
+cd Desktop
+g++ space program name .c
+./a.out
+same goes with square of number
+-----------------------------------------------------------------------------
+java socket
+make 2 files Server.java  and Client.java
+javac space Client.java
+javac space Server. java
+yes message will appear
+
+
+
+
+
+
+-

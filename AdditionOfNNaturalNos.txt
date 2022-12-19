@@ -1,0 +1,84 @@
+addition of N natural nos
+class name  = file name everywhere
+------------------------------------------------------------
+file name: Adder.java
+
+import java.rmi.*;  
+public interface Adder extends Remote{  
+public int add(int n)throws RemoteException;  
+}  
+
+
+---------------------------------------------------------------
+file name: MyClient.java
+
+import java.rmi.*;  
+import java.util.Scanner;
+public class MyClient{  
+public static void main(String args[]){  
+try{  
+Adder stub=(Adder)Naming.lookup("rmi://localhost:5000/sonoo");  
+Scanner s = new Scanner(System.in);
+System.out.println("Enter number:");
+int n=s.nextInt();
+System.out.println("Sum of"+n+" Natural Number is :");
+System.out.println(stub.add(n));  
+}catch(Exception e){}  
+}  
+}  
+
+
+-------------------------------------------------------------------------------
+file name: MyServer.java
+
+import java.rmi.*;  
+import java.rmi.registry.*;  
+public class MyServer{  
+public static void main(String args[]){  
+try{  
+Adder stub=new AdderRemote();  
+Naming.rebind("rmi://localhost:5000/sonoo",stub);  
+}catch(Exception e){System.out.println(e);}  
+}  
+}  
+-------------------------------------------------------------------------------
+after saving all these files in one New Folder names ClientServerRmi.
+folder created
+open terminal
+cd ClientServerRmi
+enter
+javac space Interface.java
+enter
+javac space MyServer.java
+enter
+javac MyClient.java
+enter
+rmic space MyServer 
+enter
+rnic registry
+enter
+output will be Server Ready !!!!!!!!!!
+open new terminal again
+cd ClientServerRmi
+enter 
+javac space MyClient.java
+enter
+2 random lines will appear
+java space MyClient
+enter
+now it will take the input give n value
+now it will display the output
+
+
+
+
+
+
+
+
+
+
+
+
+
+
